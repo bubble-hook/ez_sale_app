@@ -30,6 +30,16 @@ const COLOR_GREY = theme.COLORS.MUTED; // '#D8DDE1';
 const INPUT_WIDTH = Dimensions.get("window").width * 0.5;
 
 class LoginScreen extends Component {
+  static options(props) {
+    return {
+      topBar: {
+        title: {
+          text: "Testing static options"
+        }
+      }
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -40,6 +50,7 @@ class LoginScreen extends Component {
 
   componentDidMount() {
     console.log(this.props.authStore);
+    console.log(this.props);
 
     this.keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",

@@ -17,7 +17,7 @@ const stores = configureStore();
 const persistor = persistStore(stores);
 
 const createAppWithRedux = (Component, ...props) => {
-  return class App extends React.Component {
+  const AppComponent = class App extends React.Component {
     render() {
       return (
         <Provider store={stores}>
@@ -36,6 +36,8 @@ const createAppWithRedux = (Component, ...props) => {
       );
     }
   };
+  AppComponent.options = Component.options;
+  return AppComponent;
 };
 
 Navigation.registerComponent(`navigation.playground.WelcomeScreen`, () =>
